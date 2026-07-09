@@ -1,0 +1,25 @@
+# -------------------- Detection (trackpy.locate) --------------------
+DETECTION:
+  DIAMETER: 9          # px. Feature diameter; typically odd and ~object size.
+  SEPARATION: 9        # px. Minimum distance between detected features.
+  INVERT: false         # trackpy flag. Keep true if it improves locate() results for your processed image.
+  Z_Q: 0.85            # Quantile (0..1) used to set adaptive threshold on Z-scored image each frame.
+                       # Higher -> stricter threshold -> fewer detections.
+
+# -------------------- Background subtraction --------------------
+BACKGROUND:
+  MODE: chunked_mean   # Use chunked mean background: compute mean over each chunk and subtract from all frames in that chunk.
+
+  BG_CHUNK_SIZE_FRAMES: 100   # frames. Chunk size for background computation.
+                              # Frames 0..99 share one background, 100..199 share next, etc.
+                              # Longer -> better averaging but slower adaptation to drift.
+
+  # Performance/memory option:
+  LOAD_CHUNK_TO_RAM: false    # If true, load whole chunk into a 3D array (H x W x K) to speed up.
+                              # Uses more RAM. If false, uses low-RAM streaming (reads frames twice per chunk).
+
+# -------------------- Tracking (trackpy.link_df + filter_stubs) --------------------
+TRACKING:
+  SEARCH_RANGE: 6      # px. Max displacement per frame during linking.
+  MEMORY: 3            # frames. How long a particle can vanish and still be linked.
+  STUB_LEN: 20         # frames. Minimum trajectory length kept.
