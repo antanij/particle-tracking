@@ -196,7 +196,7 @@ def process_one_bin(bin_path: str, cfg: Dict[str, Any]) -> None:
                     fr = read_frame_at(fid, idx=t, width=W, height=H, dtype=dtype,
                                        frame_bytes=frame_bytes, mirrored_y=mirrored_y)
 
-                   work = (fr - bg).astype(float, copy=False)
+                    work = (fr - bg).astype(float, copy=False)
 
                     mu = float(work.mean())
                     sig = float(work.std())
