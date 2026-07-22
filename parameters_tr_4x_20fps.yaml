@@ -2,7 +2,7 @@
 DETECTION:
   DIAMETER: 9          # px. Feature diameter; typically odd and ~object size.
   SEPARATION: 9        # px. Minimum distance between detected features.
-  INVERT: false         # trackpy flag. Keep true if it improves locate() results for your processed image.
+  INVERT: true         # trackpy flag. Keep true if it improves locate() results for your processed image.
   Z_Q: 0.85            # Quantile (0..1) used to set adaptive threshold on Z-scored image each frame.
                        # Higher -> stricter threshold -> fewer detections.
 
