@@ -202,9 +202,7 @@ def process_one_bin(bin_path: str, cfg: Dict[str, Any]) -> None:
                     sig = float(work.std())
                     sig = max(sig, 1e-6)
                     fg_z = (work - mu) / sig
-
-                    q = (1.0 - z_q) if invert else z_q
-                    thr = float(np.quantile(fg_z, q))
+                    thr = float(np.quantile(fg_z, z_q)) 
 
                     f = tp.locate(
                         fg_z,
@@ -235,9 +233,7 @@ def process_one_bin(bin_path: str, cfg: Dict[str, Any]) -> None:
                     sig = float(work.std())
                     sig = max(sig, 1e-6)
                     fg_z = (work - mu) / sig
-
-                    q = (1.0 - z_q) if invert else z_q
-                    thr = float(np.quantile(fg_z, q))
+                    thr = float(np.quantile(fg_z, z_q))
 
                     f = tp.locate(
                         fg_z,
