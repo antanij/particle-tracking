@@ -196,7 +196,7 @@ def process_one_bin(bin_path: str, cfg: Dict[str, Any]) -> None:
                     fr = read_frame_at(fid, idx=t, width=W, height=H, dtype=dtype,
                                        frame_bytes=frame_bytes, mirrored_y=mirrored_y)
 
-                    work = -(fr - bg)
+                    work = fr - bg
                     np.clip(work, 0, None, out=work)
 
                     mu = float(work.mean())
@@ -229,7 +229,7 @@ def process_one_bin(bin_path: str, cfg: Dict[str, Any]) -> None:
                 for i, t in enumerate(range(chunk_start, chunk_end)):
                     fr = stack[i]
 
-                    work = -(fr - bg)
+                    work = fr - bg
                     np.clip(work, 0, None, out=work)
 
                     mu = float(work.mean())
